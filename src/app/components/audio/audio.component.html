@@ -1,0 +1,10 @@
+<div *ngFor="let audio of audioList">
+    <div>
+      <app-audio-player [audio]="audio"></app-audio-player>
+      <button (click)="playPause(audio)">
+        {{ audio.isPlaying ? 'Pause' : 'Play' }}
+      </button>
+    </div>
+  </div>
+  
+  <pagination-controls (pageChange)="onPageChange($event)" ></pagination-controls>

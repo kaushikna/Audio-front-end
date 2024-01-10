@@ -1,0 +1,24 @@
+<form [formGroup]="audioForm" (ngSubmit)="submitForm()">
+    <mat-form-field>
+      <input matInput placeholder="Song Name" formControlName="name">
+      <mat-error *ngIf="audioForm.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Image URL" formControlName="image">
+      <mat-error *ngIf="audioForm.get('image')?.hasError('required')">Image URL is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="desc"></textarea>
+      <mat-error *ngIf="audioForm.get('desc')?.hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input type="file" accept=".mp3" (change)="onAudioChange($event)" formControlName="audio">
+      <mat-error *ngIf="audioForm.get('audio')?.hasError('required')">Audio file is required</mat-error>
+      <mat-error *ngIf="audioForm.get('duration')?.hasError('min')">Minimum audio duration is 30 seconds</mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Add Audio</button>
+  </form>
